@@ -2,4 +2,5 @@
 C:\Users\Kyler Draper\Documents\GitRepositories\StatsCal\StatsCalculator\StatsCalculator.cpp(29,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kyler Draper\Documents\GitRepositories\StatsCal\StatsCalculator\StatsCalculator.cpp(52,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Kyler Draper\Documents\GitRepositories\StatsCal\StatsCalculator\StatsCalculator.cpp(76,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  LINK : C:\Users\Kyler Draper\Documents\GitRepositories\StatsCal\StatsCalculator\Debug\StatsCalculator.exe not found or not built by the last incremental link; performing full link
   StatsCalculator.vcxproj -> C:\Users\Kyler Draper\Documents\GitRepositories\StatsCal\StatsCalculator\Debug\StatsCalculator.exe

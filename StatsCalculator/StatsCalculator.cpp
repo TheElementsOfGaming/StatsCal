@@ -16,25 +16,17 @@ int fact(int numFact)
     return factorial;
 }
 
-int negBiNcr(int numTrials, int numSuccesses){
-    int numTrialsMinus = numTrials - 1;
-    int numSuccessesMinus = numSuccesses - 1;
-
-    return fact(numTrialsMinus) / (fact(numSuccessesMinus) *
-        fact(numTrialsMinus - numSuccessesMinus));
-}
-
 int nCr(int trials, int successes)
 {
     return fact(trials) / (fact(successes) * 
         fact(trials - successes));
 }
 
-double negBi(double percent, int numTrials, int numSuccesses)
+float negProBi(double percent, int numTrialsMinus, int numSuccessesMinus, int numTrials, int numSuccesses)
 {
     const int whole = 1;
     int powNMinusK = numTrials - numSuccesses;
-    double negBiAnswer = (negBiNcr(numTrials, numSuccesses) * (pow(percent, numSuccesses))) * (pow((whole - percent), powNMinusK));
+    float negBiAnswer = (nCr(numTrialsMinus, numSuccessesMinus) * (pow(percent, numSuccesses))) * (pow((whole - percent), powNMinusK));
     return negBiAnswer;
 }
 
@@ -53,11 +45,11 @@ double stdNegBi(int numSuccesses, double percentVal)
     return std;
 }
 
-double biCal(double percentage, int numTrials, int numSuccesses)
+float biProCal(double percentage, int numTrials, int numSuccesses)
 {
     const int whole = 1;
     const int nMinusK = numTrials - numSuccesses;
-    double biCalAns = (nCr(numTrials, numSuccesses) * (pow(percentage, numSuccesses)) * (pow((whole - percentage), nMinusK)));
+    float biCalAns = (nCr(numTrials, numSuccesses) * (pow(percentage, numSuccesses)) * (pow((whole - percentage), nMinusK)));
 
     return biCalAns;
 }
@@ -74,6 +66,33 @@ double stdBi(int numTrials, double percentage)
     const int whole = 1;
     double std;
     std = sqrt(((numTrials * percentage) * (whole - percentage)));
+    return std;
+}
+
+float geoProCal(int numXValue, double percentage)
+{
+    const int whole = 1;
+    int numXValueMinus = numXValue - 1;
+    float geoCalVal = (pow((whole - percentage), numXValueMinus) * percentage);
+
+    return geoCalVal;
+}
+
+double geoExVal(int numXValue, double percentage)
+{
+    const int whole = 1;
+    double exVal = whole / percentage;
+
+    return exVal;
+}
+
+double geoSTD(int numXValue, double percentage)
+{
+    const int whole = 1;
+    const int squared = 2;
+    double std;
+    std = sqrt(((whole - percentage) / pow(percentage, squared)));
+
     return std;
 }
 
@@ -106,9 +125,10 @@ int main()
             cout << "What's your percentage?" << endl;
             cin >> percent;
             cout << endl;
-            cout << "Your probability is: " << biCal(percent, trials, successes) << endl;
+            cout << "Your probability is: " << biProCal(percent, trials, successes) << endl;
             cout << "Your Expected Value is: " << biExVal(trials, percent) << endl;
             cout << "Your Standard Deviation is: " << stdBi(trials, percent) << endl;
+
             //Stats Menu
             cout << endl;
             cout << "Stats Calculator" << endl;
@@ -122,7 +142,27 @@ int main()
             cin >> response;
         } 
         else if (response == "2") {
-            cout << "Work in Progress" << endl;
+            cout << "What's your x value?" << endl;
+            cin >> successes;
+            cout << endl;
+            cout << "What's your probabiltity?" << endl;
+            cin >> percent;
+            cout << endl;
+            cout << "Your Probability is: " << geoProCal(successes, percent) << endl;
+            cout << "Your expected value is: " << geoExVal(successes, percent) << endl;
+            cout << "Your standard deviation is: " << geoSTD(successes, percent) << endl;
+
+            //Stats Menu
+            cout << endl;
+            cout << "Stats Calculator" << endl;
+            cout << endl;
+            cout << "1. Binomial with Expected Value and Standard Deviation" << endl;
+            cout << "2. Geometric with Expected Value and Standard Deviation" << endl;
+            cout << "3. Negative Geometric with Expected Value and Standard Deviation" << endl;
+            cout << "4. Quit" << endl;
+            cout << endl;
+            cout << "Which would you like to open (1, 2, 3, 4):";
+            cin >> response;
         }
         else if (response == "3") {
             cout << "What's your percentage?" << endl;
@@ -133,7 +173,9 @@ int main()
             cout << endl;
             cout << "How many successes?" << endl;
             cin >> successes;
-            cout << "Your probability is: " << negBi(percent, trials, successes) << endl;
+            int trialsMinus = trials - 1;
+            int successesMinus = successes - 1;
+            cout << "Your probability is: " << negProBi(percent, trialsMinus, successesMinus, trials, successes) << endl;
             cout << "Your Expected Value is: " << negExVal(successes, percent) << endl;
             cout << "Your Standard Deviation is: " << stdNegBi(successes, percent) << endl;
 

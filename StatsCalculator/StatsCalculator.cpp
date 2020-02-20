@@ -107,11 +107,15 @@ int main()
     cout << "Stats Calculator" << endl;
     cout << endl;
     cout << "1. Binomial with Expected Value and Standard Deviation" << endl;
-    cout << "2. Geometric with Expected Value and Standard Deviation" << endl;
-    cout << "3. Negative Geometric with Expected Value and Standard Deviation" << endl;
-    cout << "4. Quit" << endl;
+    cout << "2. Binomialcdf Probability with higher and lower" << endl;
+    cout << "3. Geometric with Expected Value and Standard Deviation" << endl;
+    cout << "4. Geometriccdf Probability with higher and lower" << endl;
+    cout << "5. Possion with Expected Value and Standard Deviation" << endl;
+    cout << "6. Possioncdf Probability with higher and lower" << endl;
+    cout << "7. Negative Geometric with Expected Value and Standard Deviation" << endl;
+    cout << "8. Quit" << endl;
     cout << endl;
-    cout << "Which would you like to open (1, 2, 3, 4):";
+    cout << "Which would you like to open (1, 2, 3, 4, etc.):";
     cin >> response;
     while (response != "4")
     {
@@ -142,6 +146,9 @@ int main()
             cin >> response;
         } 
         else if (response == "2") {
+
+        }
+        else if (response == "3") {
             cout << "What's your x value?" << endl;
             cin >> successes;
             cout << endl;
@@ -164,7 +171,16 @@ int main()
             cout << "Which would you like to open (1, 2, 3, 4):";
             cin >> response;
         }
-        else if (response == "3") {
+        else if (response == "4") {
+
+        }
+        else if (response == "5") {
+
+        }
+        else if (response == "6") {
+
+        }
+        else if (response == "7") {
             cout << "What's your percentage?" << endl;
             cin >> percent;
             cout << endl;
